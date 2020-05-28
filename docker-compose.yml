@@ -1,14 +1,16 @@
 version: '3.7'
 
 services:
-
-  my-app:
+    my-app:
     container_name: my-ultra-hiper-fancy-app
     build:
-      context: .
-      dockerfile: Dockerfile
+    context: .
+    dockerfile: Dockerfile
     volumes:
-      - '.:/app'
-      - '/app/node_modules'
+        - '.:/app'
+        - '/app/node_modules'
     ports:
-      - '8081:8080'
+        - '8081:8080'
+        # hot reload
+    environment:
+        - CHOKIDAR_USEPOLLING=true
